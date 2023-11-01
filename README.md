@@ -9,5 +9,7 @@
     * 과제 제대로 수행했는지 여부 확인 완료
     * 과제 재수행 후 문제 해결 - 재실행 시 `iptables`이 `inactive(dead)` 상태.
     * 사용할때마다 `systemctl start iptables` 사용하기 `systemctl status iptables`로 확인
+    * ![image](https://github.com/NyanPunch/MySQL/assets/51149853/b09e3d82-868e-4da1-bfcc-c970c3b40ceb)
+
   * 추후 각 Test들을 한 프로그램에서 가능하도록 구현하기
   []
