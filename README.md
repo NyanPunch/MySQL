@@ -6,5 +6,6 @@
   * 문제 발생 [the last packet sent successfully to the server was 0 milliseconds ago]
   * 아이피 확인 - 이상 없음
   * 포트번호 확인 - 이상 없음
-  * 과제 제대로 수행했는지 확인 완료
-  * 과제 재수행 후 문제 해결
+  * 과제 제대로 수행했는지 여부 확인 완료
+  * 과제 재수행 후 문제 해결 - 재실행 시 `iptables`이 `inactive(dead)` 상태.
+  * 사용할때마다 `systemctl start iptables` 사용하기 `systemctl status iptables`로 확인
