@@ -6,7 +6,7 @@
   * 수강신청관리
 
 
-
+---
 * Test.java : Lab#7 과제
   * 문제 발생 [the last packet sent successfully to the server was 0 milliseconds ago]
     * 아이피 확인 - 이상 없음
