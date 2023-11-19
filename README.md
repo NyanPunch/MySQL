@@ -2,6 +2,11 @@
 
 데이터베이스 시스템 과제 리포지토리
 
+* TermProject
+  * 수강신청관리
+
+
+
 * Test.java : Lab#7 과제
   * 문제 발생 [the last packet sent successfully to the server was 0 milliseconds ago]
     * 아이피 확인 - 이상 없음
