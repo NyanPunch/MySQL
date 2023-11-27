@@ -4,7 +4,7 @@
 
 * TermProject
   * 수강신청관리
-  * main.java - 해당 파일을 실행하여 수강신청관리 시스템에 접근할 수 있다.
+  * Main.java - 해당 파일을 실행하여 수강신청관리 시스템에 접근할 수 있다.
   * INSERT.java - 해당 파일로 테이블의 데이터 삽입을 수행한다.
   * SELECT.java - 해당 파일로 테이블의 데이터를 볼 수 있다. (SELECT * FROM 'tablename')으로 실행된다.
 
