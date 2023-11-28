@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+/**
+ * Created by 김경민 on 2023-11-27 ~ .
+ * Notice DB연결 전 iptables 활성화 필요
+ */
+
 public class Main {
     public static void main(String[] args)
     {
@@ -11,7 +16,7 @@ public class Main {
         while (true) {
             System.out.println("----------------------------------------");
             System.out.println("1 : INSERT     2: SELECT    3 : DELETE");
-            System.out.println("4 : UPDATE     5:           6 : ");
+            System.out.println("4 : UPDATE     5: FIND      6 : ");
             System.out.println("0 : QUIT");
             System.out.println("----------------------------------------");
             System.out.print("명령어를 입력하세요 : ");
