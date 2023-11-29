@@ -24,7 +24,7 @@ public class INSERT {
             else if (cmd == 3) insertDepartment();
             else if (cmd == 4) insertCourse();
             else if (cmd == 5) insertOpenCourse();
-//            else if (cmd == 6) insertTakes();
+            else if (cmd == 6) insertTakes();
             else if (cmd == 0) System.out.println("BACK TO MENU");
             else System.out.println("잘못된 입력입니다.");
 
@@ -159,7 +159,7 @@ public class INSERT {
             PreparedStatement pstmt = con.prepareStatement(sql);
             Scanner sc = new Scanner(System.in);
 
-            System.out.println("개설과목번호를 입력하세요(최대 8자). 예)038031");
+            System.out.println("개설과목번호를 입력하세요(최대 8자). 예)20230001");
             String OCNum = sc.next();
             pstmt.setString(1, OCNum);
 
@@ -178,6 +178,33 @@ public class INSERT {
             System.out.println("교수번호를 입력하세요(최대 8자). 예)2019054");
             String ProfID = sc.next();
             pstmt.setString(5, ProfID);
+
+            int rows = pstmt.executeUpdate();
+            System.out.println(rows + " row inserted");
+
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    private void insertTakes() {
+        try {
+            String sql = "INSERT INTO Takes VALUES(?,?,?)";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println("학번을 입력하세요(최대 8자). 예)2019054");
+            String Sno = sc.next();
+            pstmt.setString(1, Sno);
+
+            System.out.println("개설과목번호를 입력하세요(최대 8자). 예)20230001");
+            String OCno = sc.next();
+            pstmt.setString(2, OCno);
+
+            System.out.println("학점을 입력하세요. 예)A+");
+            String Grade = sc.next();
+            pstmt.setString(3, Grade);
 
             int rows = pstmt.executeUpdate();
             System.out.println(rows + " row inserted");

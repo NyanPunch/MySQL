@@ -5,12 +5,6 @@ CREATE TABLE Student (
     Major VARCHAR(100)
 );
 
-CREATE TABLE Department (
-    DeptID VARCHAR(8) PRIMARY KEY,
-    DeptName VARCHAR(100) NOT NULL,
-    DeptTel VARCHAR(20)
-);
-
 CREATE TABLE Professor (
     ProfID VARCHAR(8) PRIMARY KEY,
     PName VARCHAR(30) NOT NULL,
@@ -18,10 +12,18 @@ CREATE TABLE Professor (
     LabTel VARCHAR(15)
 );
 
+CREATE TABLE Department (
+    DeptID VARCHAR(8) PRIMARY KEY,
+    DeptName VARCHAR(100) NOT NULL,
+    DeptTel VARCHAR(20)
+);
+
 CREATE TABLE Course (
     CCode VARCHAR(8) PRIMARY KEY,
     Title VARCHAR(200) NOT NULL,
     Credits INT CHECK (Credits >= 1 AND Credits <= 4)
+    DCode VARCHAR(8),
+    FOREIGN KEY (DCode) REFERENCES Department(DeptID)
 );
 
 CREATE TABLE OpenCourse (
@@ -29,7 +31,18 @@ CREATE TABLE OpenCourse (
     Year INT NOT NULL,
     Semester VARCHAR(10) CHECK (Semester IN ('봄', '여름', '가을', '겨울')),
     CourseCode VARCHAR(8),
+    Pno VARCHAR(8),
     FOREIGN KEY (CourseCode) REFERENCES Course(CCode)
+    FOREIGN KEY (Pno) REFERENCES Professor(ProfID)
+);
+
+CREATE TABLE Takes (
+    Sno VARCHAR(8),
+    OCno INT,
+    Grade VARCHAR(2),
+    PRIMARY KEY (Sno, OCno),
+    FOREIGN KEY (Sno) REFERENCES Student(StudentID),
+    FOREIGN KEY (OCno) REFERENCES OpenCourse(OCNumber)
 );
 
 CREATE TABLE Offer (
@@ -54,4 +67,12 @@ CREATE TABLE Teaches (
     PRIMARY KEY (OCNo, PID),
     FOREIGN KEY (OCNo) REFERENCES OpenCourse(OCNumber),
     FOREIGN KEY (PID) REFERENCES Professor(ProfID)
+);
+
+CREATE TABLE Opens (
+    OCno INT,
+    Cno VARCHAR(8),
+    PRIMARY KEY (OCno, Cno),
+    FOREIGN KEY (OCno) REFERENCES OpenCourse(OCNumber),
+    FOREIGN KEY (Cno) REFERENCES Course(CCode)
 );

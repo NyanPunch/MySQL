@@ -10,12 +10,10 @@ public class DELETE {
             con = DriverManager.getConnection(
                     "jdbc:mysql://192.168.56.101:4567/kkmindb",
                     "kkmin", "idmc7114");
-            System.out.println("MySQL Server Connect!");
+            System.out.println("Choose Table to DELETE!");
             System.out.println("-----------------------------------------------------------------");
-            System.out.println("1 : DELETE STUDENT      2 : DELETE PROFESSOR    3 : DELETE COURSE");
-            System.out.println("4 : DELETE OPENCOURSE   5 : DELETE DEPARTMENT   6 : DELETE TAKES");
-            System.out.println("7 : DELETE OFFERS       8 : DELETE OPENS        9 : DELETE TEACHES");
-            System.out.println("10: DELETE BELONGS");
+            System.out.println("1 : DELETE Student  2 : DELETE Professor    3 : DELETE Department");
+            System.out.println("4 : DELETE Course   5 : DELETE OpenCourse   6 : DELETE Takes  ");
             System.out.println("0 : BACK TO MENU");
             System.out.println("-----------------------------------------------------------------");
 
@@ -23,14 +21,10 @@ public class DELETE {
             int cmd = sc.nextInt();
             if (cmd == 1) deleteStudent();
             else if (cmd == 2) deleteProfessor();
-            else if (cmd == 3) deleteCourse();
-            else if (cmd == 4) deleteOpenCourse();
-            else if (cmd == 5) deleteDepartment();
+            else if (cmd == 3) deleteDepartment();
+            else if (cmd == 4) deleteCourse();
+            else if (cmd == 5) deleteOpenCourse();
 //            else if (cmd == 6) deleteTakes();
-//            else if (cmd == 7) deleteOffers();
-//            else if (cmd == 8) deleteOpens();
-//            else if (cmd == 9) deleteTeaches();
-//            else if (cmd == 10) deleteBelongs();
             else if (cmd == 0) System.out.println("BACK TO MENU");
             else System.out.println("잘못된 입력입니다.");
         } catch (Exception e) {
@@ -40,13 +34,13 @@ public class DELETE {
 
     private void deleteStudent() {
         try {
-            String sql = "DELETE FROM STUDENT WHERE StudentID = ?";
+            String sql = "DELETE FROM Student WHERE StudentID = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
             Scanner sc = new Scanner(System.in);
 
-            System.out.println("삭제할 학생의 학번을 입력하세요(최대 8자). 예)20230001");
-            int StudentID = sc.nextInt();
-            pstmt.setInt(1, StudentID);
+            System.out.println("삭제할 학생의 학번을 입력하세요(최대 8자). 예)2019054");
+            String StudentID = sc.next();
+            pstmt.setString(1, StudentID);
 
             int rows = pstmt.executeUpdate();
             System.out.println(rows + " row deleted");
@@ -59,51 +53,13 @@ public class DELETE {
 
     private void deleteProfessor() {
         try {
-            String sql = "DELETE FROM PROFESSOR WHERE ProfID = ?";
+            String sql = "DELETE FROM Professor WHERE ProfID = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
             Scanner sc = new Scanner(System.in);
 
-            System.out.println("삭제할 교수의 학번을 입력하세요(최대 8자). 예)20230001");
-            int ProfessorID = sc.nextInt();
-            pstmt.setInt(1, ProfessorID);
-
-            int rows = pstmt.executeUpdate();
-            System.out.println(rows + " row deleted");
-
-            con.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    private void deleteCourse() {
-        try {
-            String sql = "DELETE FROM COURSE WHERE CID = ?";
-            PreparedStatement pstmt = con.prepareStatement(sql);
-            Scanner sc = new Scanner(System.in);
-
-            System.out.println("삭제할 교과목의 교과목번호를 입력하세요(최대 8자). 예)20230001");
-            int CourseID = sc.nextInt();
-            pstmt.setInt(1, CourseID);
-
-            int rows = pstmt.executeUpdate();
-            System.out.println(rows + " row deleted");
-
-            con.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    private void deleteOpenCourse() {
-        try {
-            String sql = "DELETE FROM OPENCOURSE WHERE OCID = ?";
-            PreparedStatement pstmt = con.prepareStatement(sql);
-            Scanner sc = new Scanner(System.in);
-
-            System.out.println("삭제할 개설과정의 개설과정번호를 입력하세요(최대 8자). 예)20230001");
-            int OpenCourseID = sc.nextInt();
-            pstmt.setInt(1, OpenCourseID);
+            System.out.println("삭제할 교수의 교번을 입력하세요(최대 8자). 예)2019054");
+            String ProfID = sc.next();
+            pstmt.setString(1, ProfID);
 
             int rows = pstmt.executeUpdate();
             System.out.println(rows + " row deleted");
@@ -116,13 +72,13 @@ public class DELETE {
 
     private void deleteDepartment() {
         try {
-            String sql = "DELETE FROM DEPARTMENT WHERE DeptID = ?";
+            String sql = "DELETE FROM Department WHERE DeptID = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
             Scanner sc = new Scanner(System.in);
 
-            System.out.println("삭제할 학과의 학과번호를 입력하세요(최대 8자). 예)20230001");
-            int DepartmentID = sc.nextInt();
-            pstmt.setInt(1, DepartmentID);
+            System.out.println("삭제할 학과의 학과번호를 입력하세요(최대 8자). 예)2019054");
+            String DeptID = sc.next();
+            pstmt.setString(1, DeptID);
 
             int rows = pstmt.executeUpdate();
             System.out.println(rows + " row deleted");
@@ -133,9 +89,53 @@ public class DELETE {
         }
     }
 
-    // private void deleteTakes()
-    // private void deleteOffers()
-    // private void deleteOpens()
-    // private void deleteTeaches()
-    // private void deleteBelongs()
+    private void deleteCourse() {
+        try {
+            String sql = "DELETE FROM Course WHERE CCode = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println("삭제할 교과목의 교과목번호를 입력하세요(최대 8자). 예)2019054");
+            String CourseID = sc.next();
+            pstmt.setString(1, CourseID);
+
+            int rows = pstmt.executeUpdate();
+            System.out.println(rows + " row deleted");
+
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    private void deleteOpenCourse() {
+        try {
+            String sql = "DELETE FROM OpenCourse WHERE OCNumber = ? AND Year = ? AND Semester = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println("삭제할 개설교과목의 교과목번호를 입력하세요(최대 8자). 예)2019054");
+            String OCNumber = sc.next();
+            pstmt.setString(1, OCNumber);
+            System.out.println("삭제할 개설교과목의 년도를 입력하세요(최대 4자). 예)2020");
+            String Year = sc.next();
+            pstmt.setString(2, Year);
+            System.out.println("삭제할 개설교과목의 학기를 입력하세요(최대 1자). 예)1");
+            String Semester = sc.next();
+            pstmt.setString(3, Semester);
+
+            int rows = pstmt.executeUpdate();
+            System.out.println(rows + " row deleted");
+
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    /*
+    * 삭제하기 위해 찾을 키가 많이 존재함. 따라서 키를 입력받아서 삭제하는 방식으로 구현하려 했으나
+    * 키를 입력받는 방식으로 구현하면 키가 많아질수록 코드가 길어지고 복잡하고 비효율적이라고 판단하여 미구현
+    */
+//    private void deleteTakes() {
 }

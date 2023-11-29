@@ -26,7 +26,7 @@ public class SELECT {
             else if (cmd == 3) selectDepartment();
             else if (cmd == 4) selectCourse();
             else if (cmd == 5) selectOpenCourse();
-//            else if (cmd == 6) selectTakes();
+            else if (cmd == 6) selectTakes();
             else if (cmd == 0) System.out.println("BACK TO MENU");
             else System.out.println("잘못된 입력입니다.");
         }catch(Exception e){ System.out.println(e);}
@@ -112,6 +112,22 @@ public class SELECT {
                 String CourseCode = rs.getString("CourseCode");
                 String Pno = rs.getString("Pno");
                 System.out.println(OCNumber + "\t" + Year + "\t" + Semester + " \t" + CourseCode + " \t" + Pno);
+            }
+            con.close();
+        }catch(Exception e){ System.out.println(e);}
+    }
+
+    private void selectTakes() {
+        try{
+            String sql = "SELECT * FROM Takes";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            System.out.println("학번\t개설과목번호\t성적");
+            while(rs.next()){
+                String Sno = rs.getString("Sno");
+                String OCno = rs.getString("OCno");
+                String Grade = rs.getString("Grade");
+                System.out.println(Sno + "\t" + OCno + "\t" + Grade);
             }
             con.close();
         }catch(Exception e){ System.out.println(e);}

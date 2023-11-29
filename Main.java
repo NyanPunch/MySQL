@@ -16,7 +16,7 @@ public class Main {
         while (true) {
             System.out.println("----------------------------------------");
             System.out.println("1 : INSERT     2: SELECT    3 : DELETE");
-            System.out.println("4 : UPDATE     5: FIND      6 : ");
+            System.out.println("4 : UPDATE      : FIND        : PRINT");
             System.out.println("0 : QUIT");
             System.out.println("----------------------------------------");
             System.out.print("명령어를 입력하세요 : ");
@@ -29,11 +29,11 @@ public class Main {
             } else if (cmd.equals("3")) {
                 new DELETE();
             } else if (cmd.equals("4")) {
-                //UPDATE();
+                //new UPDATE();
             } else if (cmd.equals("5")) {
-
+                //new FIND();
             } else if (cmd.equals("6")) {
-
+                //new PRINT();
             } else if (cmd.equals("0")) {
                 System.out.println("See you again! :) ");
                 break;
