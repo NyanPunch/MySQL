@@ -31,7 +31,7 @@ public class DELETE {
 //            else if (cmd == 8) deleteOpens();
 //            else if (cmd == 9) deleteTeaches();
 //            else if (cmd == 10) deleteBelongs();
-            else if (cmd == 0) System.out.println("QUIT");
+            else if (cmd == 0) System.out.println("BACK TO MENU");
             else System.out.println("잘못된 입력입니다.");
         } catch (Exception e) {
             System.out.println(e);

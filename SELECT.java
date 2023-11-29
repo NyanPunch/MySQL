@@ -33,7 +33,7 @@ public class SELECT {
 //            else if (cmd == 8) selectOpens();
 //            else if (cmd == 9) selectTeaches();
 //            else if (cmd == 10) selectBelongs();
-            else if (cmd == 0) System.out.println("QUIT");
+            else if (cmd == 0) System.out.println("BACK TO MENU");
             else System.out.println("잘못된 입력입니다.");
         }catch(Exception e){ System.out.println(e);}
     }
@@ -42,8 +42,8 @@ public class SELECT {
             stmt = con.createStatement();
             rs = stmt.executeQuery("SELECT * FROM STUDENT");
             while (rs.next())
-                System.out.println(rs.getInt(1) + " " + rs.getString(2) +
-                        " " + rs.getString(3) + " " + rs.getString(4));
+                System.out.println(rs.getInt(1) + " / " + rs.getString(2) +
+                        " / " + rs.getString(3) + " / " + rs.getString(4));
             con.close();
         } catch (Exception e) {
             System.out.println(e);

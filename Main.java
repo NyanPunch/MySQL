@@ -35,10 +35,10 @@ public class Main {
             } else if (cmd.equals("6")) {
 
             } else if (cmd.equals("0")) {
-                System.out.println("QUIT");
+                System.out.println("See you again! :) ");
                 break;
             } else {
-                System.out.println("잘못된 입력입니다.");
+                System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
             }
         }
     }

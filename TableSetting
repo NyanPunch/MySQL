@@ -1,0 +1,57 @@
+CREATE TABLE Student (
+    StudentID VARCHAR(8) PRIMARY KEY,
+    SName VARCHAR(50) NOT NULL,
+    Degree INT CHECK (Degree >= 1 AND Degree <= 6),
+    Major VARCHAR(100)
+);
+
+CREATE TABLE Department (
+    DeptID VARCHAR(8) PRIMARY KEY,
+    DeptName VARCHAR(100) NOT NULL,
+    DeptTel VARCHAR(20)
+);
+
+CREATE TABLE Professor (
+    ProfID VARCHAR(8) PRIMARY KEY,
+    PName VARCHAR(30) NOT NULL,
+    Lab VARCHAR(30),
+    LabTel VARCHAR(15)
+);
+
+CREATE TABLE Course (
+    CCode VARCHAR(8) PRIMARY KEY,
+    Title VARCHAR(200) NOT NULL,
+    Credits INT CHECK (Credits >= 1 AND Credits <= 4)
+);
+
+CREATE TABLE OpenCourse (
+    OCNumber INT PRIMARY KEY,
+    Year INT NOT NULL,
+    Semester VARCHAR(10) CHECK (Semester IN ('봄', '여름', '가을', '겨울')),
+    CourseCode VARCHAR(8),
+    FOREIGN KEY (CourseCode) REFERENCES Course(CCode)
+);
+
+CREATE TABLE Offer (
+    DID VARCHAR(8),
+    CID VARCHAR(8),
+    PRIMARY KEY (DID, CID),
+    FOREIGN KEY (DID) REFERENCES Department(DeptID),
+    FOREIGN KEY (CID) REFERENCES Course(CCode)
+);
+
+CREATE TABLE Belongs (
+    SID VARCHAR(8),
+    Dno VARCHAR(8),
+    PRIMARY KEY (SID, Dno),
+    FOREIGN KEY (SID) REFERENCES Student(StudentID),
+    FOREIGN KEY (Dno) REFERENCES Department(DeptID)
+);
+
+CREATE TABLE Teaches (
+    OCNo INT,
+    PID VARCHAR(8),
+    PRIMARY KEY (OCNo, PID),
+    FOREIGN KEY (OCNo) REFERENCES OpenCourse(OCNumber),
+    FOREIGN KEY (PID) REFERENCES Professor(ProfID)
+);
