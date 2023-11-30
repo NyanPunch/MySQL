@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public class SELECT {
     private Connection con;
-    private Statement stmt;
     private ResultSet rs;
 
     SELECT() {

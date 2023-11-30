@@ -2,8 +2,6 @@ import java.sql.*;
 import java.util.Scanner;
 public class INSERT {
     private Connection con;
-    private Statement stmt;
-    private ResultSet rs;
     INSERT() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -168,7 +166,7 @@ public class INSERT {
             PreparedStatement pstmt = con.prepareStatement(sql);
             Scanner sc = new Scanner(System.in);
 
-            System.out.println("개설과목번호를 입력하세요(최대 8자). 예)20230001");
+            System.out.println("개설번호를 입력하세요(최대 8자). 예)20230001");
             String OCNum = sc.next();
             pstmt.setString(1, OCNum);
 

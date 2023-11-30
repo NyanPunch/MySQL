@@ -2,8 +2,6 @@ import java.sql.*;
 import java.util.Scanner;
 public class DELETE {
     private Connection con;
-    private Statement stmt;
-    private ResultSet rs;
     DELETE() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -16,6 +14,7 @@ public class DELETE {
             System.out.println("4 : DELETE Course   5 : DELETE OpenCourse   6 : DELETE Takes  ");
             System.out.println("0 : BACK TO MENU");
             System.out.println("-----------------------------------------------------------------");
+            System.out.print("명령어를 입력하세요 : ");
 
             Scanner sc = new Scanner(System.in);
             int cmd = sc.nextInt();
