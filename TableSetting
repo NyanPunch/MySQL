@@ -2,14 +2,18 @@ CREATE TABLE Student (
     StudentID VARCHAR(8) PRIMARY KEY,
     SName VARCHAR(50) NOT NULL,
     Degree INT CHECK (Degree >= 1 AND Degree <= 6),
-    Major VARCHAR(100)
+    Major VARCHAR(100),
+    DeptNo VARCHAR(8),
+    FOREIGN KEY (DeptNo) REFERENCES Department(DeptID)
 );
 
 CREATE TABLE Professor (
     ProfID VARCHAR(8) PRIMARY KEY,
     PName VARCHAR(30) NOT NULL,
     Lab VARCHAR(30),
-    LabTel VARCHAR(15)
+    LabTel VARCHAR(15),
+    DID VARCHAR(8),
+    FOREIGN KEY (DID) REFERENCES Department(DeptID)
 );
 
 CREATE TABLE Department (

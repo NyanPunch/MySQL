@@ -18,6 +18,7 @@ public class SELECT {
             System.out.println("4 : SELECT Course  5 : SELECT OpenCourse   6 : SELECT Takes");
             System.out.println("0 : BACK TO MENU");
             System.out.println("-----------------------------------------------------------------");
+            System.out.print("명령어를 입력하세요 : ");
 
             Scanner sc = new Scanner(System.in);
             int cmd = sc.nextInt();
@@ -37,13 +38,14 @@ public class SELECT {
             String sql = "SELECT * FROM Student";
             PreparedStatement pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
-            System.out.println("학번 \t 이름 \t 전공 \t 학년");
+            System.out.println("학번 \t 이름 \t 전공 \t 학년 \t 학과번호");
             while(rs.next()){
                 String StudentID = rs.getString("StudentID");
                 String SName = rs.getString("SName");
                 String Major = rs.getString("Major");
                 int Degree = rs.getInt("Degree");
-                System.out.println(StudentID + " " + SName + " " + Major + " " + Degree);
+                String DeptNo = rs.getString("DeptNo");
+                System.out.println(StudentID + " " + SName + " " + Major + " " + Degree + " " + DeptNo);
             }
             con.close();
         }catch(Exception e){ System.out.println(e);}
@@ -54,13 +56,14 @@ public class SELECT {
             String sql = "SELECT * FROM Professor";
             PreparedStatement pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
-            System.out.println("교번 \t 교수명 \t 연구실 \t 연구실전화번호");
+            System.out.println("교번 \t 교수명 \t 연구실 \t 연구실전화번호 \t 학과번호");
             while(rs.next()){
                 String ProfessorID = rs.getString("ProfID");
                 String PName = rs.getString("PName");
                 String Lab = rs.getString("Lab");
                 String LabTel = rs.getString("LabTel");
-                System.out.println(ProfessorID + " " + PName + " " + Lab + " " + LabTel);
+                String DeptNo = rs.getString("DID");
+                System.out.println(ProfessorID + " " + PName + " " + Lab + " " + LabTel + " " + DeptNo);
             }
             con.close();
         }catch(Exception e){ System.out.println(e);}

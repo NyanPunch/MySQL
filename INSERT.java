@@ -16,6 +16,7 @@ public class INSERT {
             System.out.println("4 : INSERT Course   5 : INSERT OpenCourse   6 : INSERT Takes");
             System.out.println("0 : BACK TO MENU");
             System.out.println("-----------------------------------------------------------------");
+            System.out.print("명령어를 입력하세요 : ");
 
             Scanner sc = new Scanner(System.in);
             int cmd = sc.nextInt();
@@ -35,7 +36,7 @@ public class INSERT {
 
     private void insertStudent() {
         try {
-            String sql = "INSERT INTO Student VALUES(?,?,?,?)";
+            String sql = "INSERT INTO Student VALUES(?,?,?,?,?)";
             PreparedStatement pstmt = con.prepareStatement(sql);
             Scanner sc = new Scanner(System.in);
 
@@ -55,6 +56,10 @@ public class INSERT {
             String Major = sc.next();
             pstmt.setString(4, Major);
 
+            System.out.println("학과번호를 입력하세요(최대 8자). 예)038001");
+            String DeptNo = sc.next();
+            pstmt.setString(5, DeptNo);
+
             int rows = pstmt.executeUpdate();
             System.out.println(rows + " row inserted");
 
@@ -66,7 +71,7 @@ public class INSERT {
 
     private void insertProfessor() {
         try {
-            String sql = "INSERT INTO Professor VALUES(?,?,?,?)";
+            String sql = "INSERT INTO Professor VALUES(?,?,?,?,?)";
             PreparedStatement pstmt = con.prepareStatement(sql);
             Scanner sc = new Scanner(System.in);
 
@@ -85,6 +90,10 @@ public class INSERT {
             System.out.println("연구실 전화번호를 입력하세요(최대 15자). 예)043-1234");
             String Tel = sc.next();
             pstmt.setString(4, Tel);
+
+            System.out.println("학과번호를 입력하세요(최대 8자). 예)038001");
+            String DeptID = sc.next();
+            pstmt.setString(5, DeptID);
 
             int rows = pstmt.executeUpdate();
             System.out.println(rows + " row inserted");
