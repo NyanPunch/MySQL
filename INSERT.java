@@ -32,7 +32,7 @@ public class INSERT {
         }
     }
 
-    private void insertStudent() {
+    private void insertStudent() { // 학생 정보 입력
         try {
             String sql = "INSERT INTO Student VALUES(?,?,?,?,?)";
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -67,7 +67,7 @@ public class INSERT {
         }
     }
 
-    private void insertProfessor() {
+    private void insertProfessor() { //교수 정보 입력
         try {
             String sql = "INSERT INTO Professor VALUES(?,?,?,?,?)";
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -102,7 +102,7 @@ public class INSERT {
         }
     }
 
-    private void insertDepartment() {
+    private void insertDepartment() { // 학과 정보 입력
         try {
             String sql = "INSERT INTO Department VALUES(?,?,?)";
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -129,7 +129,7 @@ public class INSERT {
         }
     }
 
-    private void insertCourse() {
+    private void insertCourse() { // 교과목 정보 입력
         try {
             String sql = "INSERT INTO Course VALUES(?,?,?,?)";
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -160,7 +160,7 @@ public class INSERT {
         }
     }
 
-    private void insertOpenCourse() {
+    private void insertOpenCourse() { // 개설교과목 정보 입력
         try {
             String sql = "INSERT INTO OpenCourse VALUES(?,?,?,?,?)";
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -195,7 +195,7 @@ public class INSERT {
         }
     }
 
-    private void insertTakes() {
+    private void insertTakes() { // 수강 정보 입력
         try {
             String sql = "INSERT INTO Takes VALUES(?,?,?)";
             PreparedStatement pstmt = con.prepareStatement(sql);

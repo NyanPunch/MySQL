@@ -11,7 +11,7 @@ public class DELETE {
             System.out.println("Choose Table to DELETE!");
             System.out.println("-----------------------------------------------------------------");
             System.out.println("1 : DELETE Student  2 : DELETE Professor    3 : DELETE Department");
-            System.out.println("4 : DELETE Course   5 : DELETE OpenCourse   6 : DELETE Takes  ");
+            System.out.println("4 : DELETE Course   5 : DELETE OpenCourse   ");
             System.out.println("0 : BACK TO MENU");
             System.out.println("-----------------------------------------------------------------");
             System.out.print("명령어를 입력하세요 : ");
@@ -31,7 +31,7 @@ public class DELETE {
         }
     }
 
-    private void deleteStudent() {
+    private void deleteStudent() { // 학생 정보 삭제
         try {
             String sql = "DELETE FROM Student WHERE StudentID = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -50,7 +50,7 @@ public class DELETE {
         }
     }
 
-    private void deleteProfessor() {
+    private void deleteProfessor() { // 교수 정보 삭제
         try {
             String sql = "DELETE FROM Professor WHERE ProfID = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -69,7 +69,7 @@ public class DELETE {
         }
     }
 
-    private void deleteDepartment() {
+    private void deleteDepartment() { // 학과 정보 삭제
         try {
             String sql = "DELETE FROM Department WHERE DeptID = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -88,7 +88,7 @@ public class DELETE {
         }
     }
 
-    private void deleteCourse() {
+    private void deleteCourse() { // 교과목 정보 삭제
         try {
             String sql = "DELETE FROM Course WHERE CCode = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -107,7 +107,7 @@ public class DELETE {
         }
     }
 
-    private void deleteOpenCourse() {
+    private void deleteOpenCourse() { //개설교과목 정보 삭제
         try {
             String sql = "DELETE FROM OpenCourse WHERE OCNumber = ? AND Year = ? AND Semester = ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -134,7 +134,8 @@ public class DELETE {
 
     /*
     * 삭제하기 위해 찾을 키가 많이 존재함. 따라서 키를 입력받아서 삭제하는 방식으로 구현하려 했으나
-    * 키를 입력받는 방식으로 구현하면 키가 많아질수록 코드가 길어지고 복잡하고 비효율적이라고 판단하여 미구현
+    * 키가 많아질수록 코드가 길어지고 복잡하고 비효율적이라고 판단하여 미구현
+    * 그리고 수강한 내역을 삭제하는 행위도 부적합하다고 판단하여 미구현한 이유 중 하나
     */
-//    private void deleteTakes() {
+    // private void deleteTakes() // 수강 정보 삭제
 }

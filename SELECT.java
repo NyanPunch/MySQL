@@ -32,81 +32,81 @@ public class SELECT {
         }catch(Exception e){ System.out.println(e);}
     }
 
-    private void selectStudent() {
+    private void selectStudent() { //학생 정보 출력
         try{
             String sql = "SELECT * FROM Student";
             PreparedStatement pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
-            System.out.println("학번 \t 이름 \t 전공 \t 학년 \t 학과번호");
+            System.out.println("학번\t이름 \t전공 \t학년 \t학과번호");
             while(rs.next()){
                 String StudentID = rs.getString("StudentID");
                 String SName = rs.getString("SName");
                 String Major = rs.getString("Major");
                 int Degree = rs.getInt("Degree");
                 String DeptNo = rs.getString("DeptNo");
-                System.out.println(StudentID + " " + SName + " " + Major + " " + Degree + " " + DeptNo);
+                System.out.println(StudentID + "\t" + SName + "\t" + Major + "\t" + Degree + " \t" + DeptNo);
             }
             con.close();
         }catch(Exception e){ System.out.println(e);}
     }
 
-    private void selectProfessor() {
+    private void selectProfessor() { // 교수 정보 출력
         try{
             String sql = "SELECT * FROM Professor";
             PreparedStatement pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
-            System.out.println("교번 \t 교수명 \t 연구실 \t 연구실전화번호 \t 학과번호");
+            System.out.println("교번\t교수명\t연구실\t연구실전화번호\t학과번호");
             while(rs.next()){
                 String ProfessorID = rs.getString("ProfID");
                 String PName = rs.getString("PName");
                 String Lab = rs.getString("Lab");
                 String LabTel = rs.getString("LabTel");
                 String DeptNo = rs.getString("DID");
-                System.out.println(ProfessorID + " " + PName + " " + Lab + " " + LabTel + " " + DeptNo);
+                System.out.println(ProfessorID + "\t" + PName + "\t" + Lab + "\t" + LabTel + "\t" + DeptNo);
             }
             con.close();
         }catch(Exception e){ System.out.println(e);}
     }
 
-    private void selectDepartment() {
+    private void selectDepartment() { // 학과 정보 출력
         try{
             String sql = "SELECT * FROM Department";
             PreparedStatement pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
-            System.out.println("학과번호 \t 학과명 \t 전화번호");
+            System.out.println("학과번호\t학과명\t전화번호");
             while(rs.next()){
                 String DeptID = rs.getString("DeptID");
                 String DName = rs.getString("DeptName");
                 String DTel = rs.getString("DeptTel");
-                System.out.println(DeptID + " " + DName + " " + DTel);
+                System.out.println(DeptID + "\t" + DName + "\t" + DTel);
             }
             con.close();
         }catch(Exception e){ System.out.println(e);}
     }
 
-    private void selectCourse() {
+    private void selectCourse() { // 교과목 정보 출력
         try{
             String sql = "SELECT * FROM Course";
             PreparedStatement pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
-            System.out.println("교과목번호 \t교과목명 \t학점 \t학과번호");
+            System.out.println("교과목번호\t교과목명\t학점\t학과번호");
             while(rs.next()){
                 String CCode = rs.getString("CCode");
                 String Title = rs.getString("Title");
                 int Credits = rs.getInt("Credits");
                 String DCode = rs.getString("DCode");
-                System.out.println(CCode + " \t" + Title + " \t" + Credits + " \t" + DCode);
+                System.out.println(CCode + "\t" + Title + "\t" + Credits + "\t" + DCode);
             }
             con.close();
         }catch(Exception e){ System.out.println(e);}
     }
 
-    private void selectOpenCourse() {
+    private void selectOpenCourse() { // 개설교과목 정보 출력
         try{
             String sql = "SELECT * FROM OpenCourse";
             PreparedStatement pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
-            System.out.println("개설과목번호\t개설연도\t개설학기\t교과목번호\t담당교수번호");
+            System.out.println("개설교과목번호\t개설연도\t개설학기\t교과목번호\t담당교수번호");
             while(rs.next()){
                 String OCNumber = rs.getString("OCNumber");
                 int Year = rs.getInt("Year");
@@ -119,7 +119,7 @@ public class SELECT {
         }catch(Exception e){ System.out.println(e);}
     }
 
-    private void selectTakes() {
+    private void selectTakes() { // 수강 정보 출력
         try{
             String sql = "SELECT * FROM Takes";
             PreparedStatement pstmt = con.prepareStatement(sql);
